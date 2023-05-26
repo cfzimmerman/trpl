@@ -19,7 +19,6 @@ fn main() -> std::io::Result<()> {
 
     let index = selection.unwrap_or_default() as i32;
 
-
     loop {
         print!("Temperature to convert: ");
         io::stdout().flush().unwrap();
