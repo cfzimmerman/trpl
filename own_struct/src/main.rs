@@ -3,7 +3,7 @@ fn main() {
         silent: true,
         count: 4,
         first_half: String::from("Hey "),
-        second_half: String::from("there!")
+        second_half: String::from("there!"),
     };
     msg.try_ownership();
     msg.try_ownership();
@@ -41,5 +41,3 @@ impl ConvolutedMessage {
         println!("{}", str);
     }
 }
-
-
