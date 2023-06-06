@@ -2,7 +2,7 @@ fn main() {
     let inputs: Vec<i32> = vec![0, 5, 7, 1, 2, 2, 0, 9, -11];
     // let inputs: Vec<i32> = vec![5, 2, 3, 1];
     // let inputs: Vec<i32> = vec![0, 7, -3, 5, 9, 4, 4, 3];
-    let sorted = sort::quicksort(inputs);
+    let sorted: Result<Vec<i32>, std::io::Error> = sort::quicksort(inputs);
     println!("{:?}", sorted)
 }
 
@@ -11,9 +11,6 @@ pub mod sort {
     use std::io;
 
     pub fn quicksort(nums: Vec<i32>) -> Result<Vec<i32>, io::Error> {
-        // The partition's right pointer sometimes goes one below the last element
-        // in the array. We reserve an extra index placeholder to prevent exceeding
-        // usize bounds in negative number.
         let last_index: usize = nums.len() - 1;
         run_quicksort(nums, 0, last_index)
     }
@@ -54,7 +51,6 @@ pub mod sort {
             while left <= right && nums[right] > pivot {
                 right -= 1;
             }
-
             if left <= right {
                 nums.swap(left, right);
                 left += 1;
